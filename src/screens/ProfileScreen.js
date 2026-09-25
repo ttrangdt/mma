@@ -39,7 +39,7 @@ export default function ProfileScreen() {
         {/* Top Header Card */}
         <View style={styles.bannerContainer}>
           <Image
-            source={require('../../asset/bg_banner_profile_male.png')}
+            source={{ uri: 'https://raw.githubusercontent.com/ttrangdt/mma/d276c912de021516961f3a0a4eba534661ba087d/asset/bg_banner_profile_male.png' }}
             style={styles.bannerImage}
           />
 

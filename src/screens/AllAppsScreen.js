@@ -13,6 +13,8 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { IconSearch, IconPayslip } from '../components/icons/AppIcons';
 
+const GITHUB_ASSET_BASE = 'https://raw.githubusercontent.com/ttrangdt/mma/d276c912de021516961f3a0a4eba534661ba087d/asset';
+
 const ALL_APPS_DATA = [
   {
     title: 'WORK',
@@ -22,34 +24,34 @@ const ALL_APPS_DATA = [
         name: 'Approve Now',
         description:
           'Notify managers of pending requests and allow managers to approve/reject requests from internal tools',
-        icon: require('../../asset/ic_favourite_approve_now.png'),
+        icon: { uri: `${GITHUB_ASSET_BASE}/ic_favourite_approve_now.png` },
       },
       {
         id: 'reward',
         name: 'Reward',
         description:
           'Send colleagues a thank you note or reward Gold for exceptional contribution',
-        icon: require('../../asset/ic_favourite_recognition.png'),
+        icon: { uri: `${GITHUB_ASSET_BASE}/ic_favourite_recognition.png` },
       },
       {
         id: 'discipline',
         name: 'Discipline',
         description:
           'Send a discipline warning to subordinates for violation of codes of conduct',
-        icon: require('../../asset/ic_favourite_discipline.png'),
+        icon: { uri: `${GITHUB_ASSET_BASE}/ic_favourite_discipline.png` },
       },
       {
         id: 'learning',
         name: 'Learning',
         description:
           'View a list of mandatory, registered and suggested learning courses; check-in and send feedback for each course',
-        icon: require('../../asset/ic_favourite_learning.png'),
+        icon: { uri: `${GITHUB_ASSET_BASE}/ic_favourite_learning.png` },
       },
       {
         id: 'my_tasks',
         name: 'My Tasks',
         description: '',
-        icon: require('../../asset/ic_favorite_pear.webp'),
+        icon: { uri: `${GITHUB_ASSET_BASE}/ic_favorite_pear.webp` },
       },
     ],
   },
@@ -60,27 +62,27 @@ const ALL_APPS_DATA = [
         id: 'fpt_care',
         name: 'FPT Care',
         description: 'FPT Care',
-        icon: require('../../asset/ic_favourite_fpt_care.png'),
+        icon: { uri: `${GITHUB_ASSET_BASE}/ic_favourite_fpt_care.png` },
       },
       {
         id: 'events',
         name: 'Events',
         description:
           'Register, check-in, check-out, send feedback to company events and programs',
-        icon: require('../../asset/ic_favourite_event.png'),
+        icon: { uri: `${GITHUB_ASSET_BASE}/ic_favourite_event.png` },
       },
       {
         id: 'survey',
         name: 'Survey',
         description:
           'Conduct and collect responses for company-wide or department-wide surveys',
-        icon: require('../../asset/ic_favourite_survey.png'),
+        icon: { uri: `${GITHUB_ASSET_BASE}/ic_favourite_survey.png` },
       },
       {
         id: 'fpt_dating',
         name: 'FPT Dating',
         description: 'Dating feature.',
-        icon: require('../../asset/ic_favourite_dating.png'),
+        icon: { uri: `${GITHUB_ASSET_BASE}/ic_favourite_dating.png` },
       },
       {
         id: 'payslip',
@@ -93,7 +95,7 @@ const ALL_APPS_DATA = [
         name: 'Birthday',
         description:
           "Your birthday is a special moment. We're very happy to send the best wishes for you. Colleagues can send you birthday wishes on myFPT.",
-        icon: require('../../asset/ic_favourite_birthday.png'),
+        icon: { uri: `${GITHUB_ASSET_BASE}/ic_favourite_birthday.png` },
       },
     ],
   },
@@ -105,14 +107,14 @@ const ALL_APPS_DATA = [
         name: 'News',
         description:
           'A collection of latest news and notable events around the company',
-        icon: require('../../asset/ic_favourite_news.png'),
+        icon: { uri: `${GITHUB_ASSET_BASE}/ic_favourite_news.png` },
       },
       {
         id: 'star_ave',
         name: 'Star Ave',
         description:
           'Recognise notable achievements within a business unit or within FPT',
-        icon: require('../../asset/ic_favourite_star_ave.png'),
+        icon: { uri: `${GITHUB_ASSET_BASE}/ic_favourite_star_ave.png` },
       },
     ],
   },
@@ -124,7 +126,7 @@ const ALL_APPS_DATA = [
         name: 'Employee Info',
         description:
           'Basic, non-confidential employee information (name, gender, department, etc.)',
-        icon: require('../../asset/ic_favourite_employee_info.png'),
+        icon: { uri: `${GITHUB_ASSET_BASE}/ic_favourite_employee_info.png` },
       },
     ],
   },
@@ -135,7 +137,7 @@ const ALL_APPS_DATA = [
         id: 'game',
         name: 'Game',
         description: 'Community-engaging games with Gold as rewards',
-        icon: require('../../asset/ic_favourite_game.png'),
+        icon: { uri: `${GITHUB_ASSET_BASE}/ic_favourite_game.png` },
       },
     ],
   },
