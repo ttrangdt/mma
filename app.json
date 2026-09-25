@@ -1,0 +1,28 @@
+{
+  "expo": {
+    "name": "myFPT",
+    "slug": "myfpt-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./asset/ic_favourite_fpt_care.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "favicon": "./asset/ic_favourite_fpt_care.png"
+    },
+    "plugins": [
+      "expo-font"
+    ]
+  }
+}
