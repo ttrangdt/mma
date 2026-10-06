@@ -11,7 +11,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { IconSearch, IconPayslip } from '../components/icons/AppIcons';
+import { IconSearch, IconPayslip, IconListToggle } from '../components/icons/AppIcons';
 
 const GITHUB_ASSET_BASE = 'https://raw.githubusercontent.com/ttrangdt/mma/d276c912de021516961f3a0a4eba534661ba087d/asset';
 
@@ -179,7 +179,11 @@ export default function AllAppsScreen() {
           )}
         </View>
         <TouchableOpacity style={styles.gridBtn} onPress={() => setIsGridView(!isGridView)}>
-          <Ionicons name={isGridView ? 'list-outline' : 'grid-outline'} size={24} color="#8E8E93" />
+          {isGridView ? (
+            <IconListToggle size={24} color="#8E8E93" />
+          ) : (
+            <Ionicons name="grid-outline" size={24} color="#8E8E93" />
+          )}
         </TouchableOpacity>
       </View>
 

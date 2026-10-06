@@ -273,3 +273,17 @@ export function IconPayslip({ size = 46 }) {
     </Svg>
   );
 }
+
+export function IconListToggle({ size = 24, color = "#8E8E93" }) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+      <Circle cx="6" cy="6" r="2" stroke={color} strokeWidth="2" />
+      <Path d="M9 6H20" stroke={color} strokeWidth="2" strokeLinecap="round" />
+      <Circle cx="6" cy="12" r="2" stroke={color} strokeWidth="2" />
+      <Path d="M9 12H20" stroke={color} strokeWidth="2" strokeLinecap="round" />
+      <Circle cx="6" cy="18" r="2" stroke={color} strokeWidth="2" />
+      <Path d="M9 18H20" stroke={color} strokeWidth="2" strokeLinecap="round" />
+    </Svg>
+  );
+}
+
