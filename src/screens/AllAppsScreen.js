@@ -145,17 +145,20 @@ const ALL_APPS_DATA = [
 
 export default function AllAppsScreen() {
   const [searchQuery, setSearchQuery] = useState('');
+  const [isGridView, setIsGridView] = useState(false);
 
   const filteredData = ALL_APPS_DATA.map((section) => {
-    const filteredItems = section.data.filter(
-      (item) =>
-        item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        item.description.toLowerCase().includes(searchQuery.toLowerCase())
+    const filteredItems = section.data.filter((item) =>
+      item.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
+    
+    if (isGridView) {
+      return { ...section, data: filteredItems.length > 0 ? [filteredItems] : [] };
+    }
     return { ...section, data: filteredItems };
   }).filter((section) => section.data.length > 0);
 
-  const renderHeader = () => (
+  const headerComponent = (
     <View style={styles.headerContainer}>
       <View style={styles.searchBarRow}>
         <View style={styles.searchBox}>
@@ -175,8 +178,8 @@ export default function AllAppsScreen() {
             </TouchableOpacity>
           )}
         </View>
-        <TouchableOpacity style={styles.gridBtn}>
-          <Ionicons name="grid-outline" size={24} color="#8E8E93" />
+        <TouchableOpacity style={styles.gridBtn} onPress={() => setIsGridView(!isGridView)}>
+          <Ionicons name={isGridView ? 'list-outline' : 'grid-outline'} size={24} color="#8E8E93" />
         </TouchableOpacity>
       </View>
 
@@ -190,25 +193,48 @@ export default function AllAppsScreen() {
     </View>
   );
 
-  const renderItem = ({ item }) => (
-    <TouchableOpacity style={styles.itemRow} activeOpacity={0.7}>
-      <View style={styles.iconCircleContainer}>
-        {item.IconComponent ? (
-          <item.IconComponent size={46} />
-        ) : (
-          <Image source={item.icon} style={styles.itemIcon} />
-        )}
-      </View>
-      <View style={styles.itemContent}>
-        <Text style={styles.itemName}>{item.name}</Text>
-        {item.description ? (
-          <Text style={styles.itemDescription} numberOfLines={3}>
-            {item.description}
-          </Text>
-        ) : null}
-      </View>
-    </TouchableOpacity>
-  );
+  const renderItem = ({ item }) => {
+    if (isGridView && Array.isArray(item)) {
+      return (
+        <View style={styles.gridContainer}>
+          {item.map((gridItem) => (
+            <TouchableOpacity key={gridItem.id} style={styles.gridItem} activeOpacity={0.7}>
+              <View style={styles.gridIconCircle}>
+                {gridItem.IconComponent ? (
+                  <gridItem.IconComponent size={46} />
+                ) : (
+                  <Image source={gridItem.icon} style={styles.gridItemIcon} />
+                )}
+              </View>
+              <Text style={styles.gridItemName} numberOfLines={2}>
+                {gridItem.name}
+              </Text>
+            </TouchableOpacity>
+          ))}
+        </View>
+      );
+    }
+
+    return (
+      <TouchableOpacity style={styles.itemRow} activeOpacity={0.7}>
+        <View style={styles.iconCircleContainer}>
+          {item.IconComponent ? (
+            <item.IconComponent size={46} />
+          ) : (
+            <Image source={item.icon} style={styles.itemIcon} />
+          )}
+        </View>
+        <View style={styles.itemContent}>
+          <Text style={styles.itemName}>{item.name}</Text>
+          {item.description ? (
+            <Text style={styles.itemDescription} numberOfLines={3}>
+              {item.description}
+            </Text>
+          ) : null}
+        </View>
+      </TouchableOpacity>
+    );
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -216,10 +242,10 @@ export default function AllAppsScreen() {
       <SectionList
         sections={filteredData}
         keyExtractor={(item) => item.id}
-        ListHeaderComponent={renderHeader}
+        ListHeaderComponent={headerComponent}
         renderSectionHeader={renderSectionHeader}
         renderItem={renderItem}
-        ItemSeparatorComponent={() => <View style={styles.separator} />}
+        ItemSeparatorComponent={() => !isGridView ? <View style={styles.separator} /> : null}
         contentContainerStyle={styles.listContent}
         stickySectionHeadersEnabled={false}
         showsVerticalScrollIndicator={true}
@@ -330,5 +356,38 @@ const styles = StyleSheet.create({
     height: StyleSheet.hairlineWidth,
     backgroundColor: '#E5E5EA',
     marginLeft: 76,
+  },
+  gridContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    paddingVertical: 12,
+    backgroundColor: '#FFFFFF',
+  },
+  gridItem: {
+    width: '25%',
+    alignItems: 'center',
+    marginBottom: 16,
+  },
+  gridIconCircle: {
+    width: 54,
+    height: 54,
+    borderRadius: 27,
+    backgroundColor: '#EEF4FF',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 8,
+    overflow: 'hidden',
+  },
+  gridItemIcon: {
+    width: 46,
+    height: 46,
+    resizeMode: 'contain',
+  },
+  gridItemName: {
+    fontSize: 12,
+    fontWeight: '500',
+    color: '#000000',
+    textAlign: 'center',
+    paddingHorizontal: 2,
   },
 });

@@ -4,7 +4,6 @@
     "slug": "myfpt-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./asset/ic_favourite_fpt_care.png",
     "userInterfaceStyle": "light",
     "splash": {
       "resizeMode": "contain",
@@ -19,7 +18,6 @@
       }
     },
     "web": {
-      "favicon": "./asset/ic_favourite_fpt_care.png"
     },
     "plugins": [
       "expo-font"
